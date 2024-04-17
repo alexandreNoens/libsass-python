@@ -1,5 +1,6 @@
 coverage
 coverage-enable-subprocess
+importlib.resources
 pre-commit
 pytest
 werkzeug>=0.9

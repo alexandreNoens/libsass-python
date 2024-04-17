@@ -823,7 +823,7 @@ class WsgiTestCase(BaseTestCase):
             with pytest.warns(FutureWarning):
                 app = SassMiddleware(
                     self.sample_wsgi_app, {
-                        __name__: (src_dir, css_dir, '/static'),
+                        'sasstests': (src_dir, css_dir, '/static'),
                     },
                 )
             client = Client(app, Response)
@@ -849,7 +849,7 @@ class WsgiTestCase(BaseTestCase):
             shutil.copytree('test', src_dir)
             app = SassMiddleware(
                 self.sample_wsgi_app, {
-                    __name__: {
+                    'sasstests': {
                         'sass_path': src_dir,
                         'css_path': css_dir,
                         'wsgi_path': '/static',
@@ -870,8 +870,8 @@ class WsgiTestCase(BaseTestCase):
         with tempdir() as css_dir:
             app = SassMiddleware(
                 self.sample_wsgi_app, {
-                    __name__: {
-                        'sass_path': 'test',
+                    'sasstests': {
+                        'sass_path': '../test',
                         'css_path': css_dir,
                         'wsgi_path': '/static',
                         'strip_extension': True,
